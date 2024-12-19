@@ -1,0 +1,435 @@
+.background-div {
+    
+    background-size: cover; /* Ensures the image covers the entire viewport */
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100vw; /* 100% of the viewport width */
+    height: 100vh; /* 100% of the viewport height */
+    margin: 0; /* Remove any margin that could cause overflow */
+    padding: 0;
+    background-attachment: fixed;
+}
+
+/* Content Styling */
+.header {
+    text-align: right;
+    color: black; 
+    font-family: Arial, sans-serif;
+    padding-right: 10%;
+    padding-top: 10%;
+}
+
+.header h1 {
+    font-size: 7rem;
+    margin: 0;
+    font-weight: bold;
+}
+
+.header p {
+    font-size: 2.5rem;
+    margin: 10px 0 0;
+}
+
+/* Mobile Navigation */
+.mobileNav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.9); /* Dark background */
+    z-index: 1000;
+    padding: 10px 20px;
+}
+
+.mobileNav a.icon {
+    color: white;
+    font-size: 1.5rem;
+    text-decoration: none;
+    display: block;
+    cursor: pointer;
+}
+
+
+
+/* Default styles for the navigation */
+.mobileNav {
+    position: relative;
+    display: none;
+}
+
+.navBar {
+     /* Hidden by default */
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    background-color: #333; /* Background color for the menu */
+    position: absolute;
+    top: 40px; /* Adjust based on the size of the hamburger icon */
+    right: 0;
+    width: 200px; /* Menu width */
+    border-radius: 4px;
+    z-index: 1000;
+}
+
+.navBar li {
+    display: none !important;
+    text-align: left;
+    border-bottom: 1px solid #444; /* Optional for a divider effect */
+}
+
+.navBar li a {
+    display: block;
+    padding: 10px;
+    color: #fff;
+    text-decoration: none;
+}
+
+.navBar li a:hover {
+    background-color: #575757;
+}
+
+/* Hamburger icon */
+.icon {
+    cursor: pointer;
+    font-size: 24px;
+    color: #333;
+}
+
+.icon:hover {
+    color: #000;
+}
+
+.navBar {
+    display: none; /* Hidden by default for smaller screens */
+}
+
+/* For larger screens, show the navBar */
+@media (min-width: 768px) {
+    .navBar {
+        
+        position: static;
+        flex-direction: row;
+        background: none;
+        width: auto;
+        display: flex;
+    }
+
+
+    .navBar li {
+        border: none;
+        
+    }
+
+    .navBar li a {
+        padding: 10px 20px;
+    }
+
+    .icon {
+        display: none;
+    }
+}
+
+
+
+
+/* ABOUT ME SECTION */
+.about-me-section {
+    padding: 80px 20px;
+    background-color: #f9f9f9; /* Light background for contrast */
+    text-align: left;
+}
+
+.about-me-section .container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Text Content Styling */
+.about-me-text {
+    flex: 1;
+}
+
+.section-title {
+    font-size: 4rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.about-me-text p {
+    font-size: 1.4rem;
+    color: #555;
+    line-height: 1.8;
+    margin-bottom: 15px;
+}
+
+.about-me-text .highlight {
+    color: #ffcc00; /* Highlight color */
+    font-weight: bold;
+}
+
+/* Image Styling */
+.about-me-image {
+    flex: 1;
+    text-align: center;
+}
+
+.about-me-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out;
+}
+
+.about-me-image img:hover {
+    transform: scale(1.05);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .about-me-section .container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .about-me-image,
+    .about-me-text {
+        width: 100%;
+    }
+}
+
+
+
+/* Carousel Section */
+.carousel-section {
+    padding: 80px 20px;
+    text-align: center;
+    background-color: #f9f9f9;
+}
+
+
+
+/* Carousel Container */
+.carousel-container {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    overflow: hidden; /* Hide overflowing images */
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Images */
+.carousel-image {
+    display: none; /* Hide all images initially */
+    width: 100%;
+    height: auto;
+    transition: opacity 0.5s ease-in-out;
+}
+
+/* Show Active Image */
+.carousel-image.active {
+    display: block; /* Show current image */
+}
+
+/* Navigation Buttons */
+.prev, .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 2rem;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    user-select: none;
+    border-radius: 50%;
+    z-index: 1000;
+    transition: background-color 0.3s ease;
+}
+
+.prev:hover, .next:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
+}
+
+
+
+
+/* EDUCATION SECTION */
+.education-section {
+    padding: 80px 20px;
+    background-color: #f9f9f9;
+}
+
+.education-section .container {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto; /* Center the container */
+}
+
+/* Left Image Styling */
+.education-image {
+    flex: 1;
+    text-align: center;
+}
+
+.education-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Right Text Content */
+.education-text {
+    flex: 1;
+}
+
+
+
+.education-text p {
+    font-size: 1.4rem;
+    color: #555;
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+.timeline {
+    list-style: none;
+    padding: 0;
+}
+
+.timeline li {
+    font-size: 1.4rem;
+    color: #444;
+    margin-bottom: 10px;
+}
+
+.highlight {
+    color: #ffcc00; /* Highlight color */
+    font-weight: bold;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .education-section .container {
+        flex-direction: column; /* Stack image and text vertically */
+        text-align: center;
+    }
+
+    .education-image {
+        margin-bottom: 20px; /* Add spacing below image */
+    }
+}
+
+/* MyPlan SECTION */
+.myplan-section {
+    padding: 80px 20px;
+    background-color: #f9f9f9;
+}
+
+.myplan-section .container {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto; /* Center the container */
+}
+
+/* Right Text Content */
+.myplan-text {
+    flex: 1;
+}
+
+.myplan-text h2 {
+    text-align: center;
+}
+
+.myplan-text p {
+    font-size: 1.5rem;
+    color: #555;
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .myplan-section .container {
+        flex-direction: column; /* Stack image and text vertically */
+        text-align: center;
+    }
+
+}
+
+/* Travel Section */
+.travel-section {
+    padding: 80px 20px;
+    background-color: #f9f9f9; /* Light background for contrast */
+}
+
+.travel-section .container {
+    max-width: 1200px;
+    margin: 0 auto; /* Center the container */
+    text-align: center; /* Center align the text */
+}
+
+
+.travel-section p {
+    font-size: 1.4rem;
+    color: #555;
+    line-height: 1.8;
+    margin-bottom: 30px; /* Space below the paragraph */
+}
+
+/* Travel Gallery */
+.travel-gallery {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Space between images */
+    flex-wrap: wrap; /* Allows wrapping for smaller screens */
+    margin-top: 20px;
+}
+
+.travel-gallery img {
+    width: calc(33.33% - 20px); /* 3 images per row with space between */
+    max-width: 100%; /* Prevent overflow */
+    height: auto;
+    border-radius: 12px; /* Rounded corners for the images */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Subtle shadow */
+    transition: transform 0.3s ease-in-out; /* Smooth hover effect */
+}
+
+.travel-gallery img:hover {
+    transform: scale(1.05); /* Slightly enlarge on hover */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .travel-gallery img {
+        width: calc(50% - 20px); /* 2 images per row for tablets */
+    }
+}
+
+@media (max-width: 480px) {
+    .travel-gallery img {
+        width: 100%; /* Single image per row for small screens */
+    }
+}

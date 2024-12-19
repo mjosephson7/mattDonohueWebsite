@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Matt Donohue | Physio</title>
+
+        <link rel="stylesheet" href="assets/css/styles.css">
+        <script src="assets/js/script.js"></script>
+
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
+    </head>
+
+    <body id="backgroundFill" onscroll="scroll();">
+        <div class="container">
+            <a name="top"></a>
+
+            <div class="background-div" id="para1" style="background-image: url('assets/img/yellow.jpg')">
+                <div class="header">
+                    <h1>MATT DONOHUE</h1>
+                    <p>Follow my journey through the world of Physio.</p>
+                </div>
+            </div>
+
+            <div class="mobileNav">
+                
+                <a href="javascript:void(0);" class="icon" id="hamburgerIcon">
+                    <i class="fa fa-bars"></i>
+                </a>
+            
+                <!-- Navigation Links -->
+                <ul class="navBar" id="navLinks">
+                    <li><a href="#top" class="navOver">Home</a></li>
+                    <li><a href="#whoami">Who Am I</a></li>
+                    <li><a href="#mylife">My Life</a></li>
+                    <li><a href="#education">Education</a></li>
+                    <li><a href="#myplan">My Plan</a></li>
+                    <li><a href="#mytravel">My Travel</a></li>
+                </ul>
+            </div>
+            
+            
+
+            <div id="innerWrap">
+                
+                <div>
+                    <!-- ABOUT ME SECTION -->
+                    <section id="aboutMe" class="about-me-section">
+                        <div class="container">
+                            <!-- Left Column: Text Content -->
+                            <div class="about-me-text">
+                                <h2 class="section-title">Who I Am</h2>
+                                <p>
+                                    I’m <strong>Matt Donohue</strong>, a passionate physiotherapy enthusiast dedicated to improving lives through movement and well-being.
+                                    With a background in <span class="highlight">sports performance</span> and health sciences, I aim to bring innovation, empathy, and expertise to everything I do.
+                                </p>
+                                <p>
+                                    I thrive on helping others unlock their full potential. Whether it’s through rehabilitation strategies or proactive fitness plans,
+                                    my focus is always on <span class="highlight">positive impact</span> and personal growth.
+                                </p>
+                            </div>
+
+                            <!-- Right Column: Image -->
+                            <div class="about-me-image">
+                                <img src="assets/img/about-me.jpg" alt="Matt Donohue" />
+                            </div>
+                        </div>
+                    </section>
+
+                </div>
+
+                <div>
+                    <!-- IMAGE CAROUSEL SECTION -->
+                    <section id="imageCarousel" class="carousel-section">
+                        <h2 class="section-title">My Life in Photos</h2>
+                        <div class="carousel-container">
+                            <div class="carousel">
+                                <img src="assets/img/image1.jpg" class="carousel-image active" alt="Experience 1">
+                                <img src="assets/img/image2.jpg" class="carousel-image" alt="Experience 2">
+                                <img src="assets/img/image3.jpg" class="carousel-image" alt="Experience 3">
+                            </div>
+                            
+                            <!-- Navigation Buttons -->
+                            <a class="prev" onclick="changeSlide(-1)">&#10094;</a>
+                            <a class="next" onclick="changeSlide(1)">&#10095;</a>
+                        </div>
+                    </section>
+
+                </div>
+
+                <div>
+                    <!-- EDUCATION SECTION -->
+                    <section id="education" class="education-section">
+                        <div class="container">
+                            <!-- Left Column: Image -->
+                            <div class="education-image">
+                                <img src="assets/img/uni.jpg" alt="Education">
+                            </div>
+
+                            <!-- Right Column: Text -->
+                            <div class="education-text">
+                                <h2 class="section-title">Education History</h2>
+                                <p>
+                                    I have completed my studies in <strong>Kinesiology</strong> with a focus on 
+                                    <span class="highlight">sports performance</span> and physiotherapy. My educational background equips me 
+                                    with the knowledge and expertise to deliver innovative solutions for physical health.
+                                </p>
+                                <ul class="timeline">
+                                    <li><strong>Western University</strong> - Kin, 2020 - 2024</li>
+                                    <li><strong>Relevant Courses</strong>: Biomechanics, Exercise Physiology, Rehabilitation Techniques</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <div>
+                <!-- MY PLAN SECTION -->
+                    <section id="myPlan" class="myplan-section">
+                        <div class="container">
+                            <div class="myplan-text">
+                                <h2 class="section-title">My Plan</h2>
+                                <p>
+                                    My goal is to combine my passion for physiotherapy with innovative approaches to 
+                                    <span class="highlight">sports rehabilitation</span> and fitness training. I aim to work closely with individuals and athletes, 
+                                    helping them overcome injuries and unlock their full potential.
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <div>
+                    <!-- MY TRAVELS SECTION -->
+                    <section id="myTravels" class="travel-section">
+                        <div class="container">
+                            <h2 class="section-title">My Travels</h2>
+                            <p>
+                                Exploring new places has been a cornerstone of my personal growth. Through travel, I’ve experienced diverse cultures, people, 
+                                and environments, which have shaped my perspective on health and well-being.
+                            </p>
+                            <div class="travel-gallery">
+                                <img src="assets/img/travel1.jpg" alt="Travel 1">
+                                <img src="assets/img/travel2.jpg" alt="Travel 2">
+                                <img src="assets/img/travel3.jpg" alt="Travel 3">
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
