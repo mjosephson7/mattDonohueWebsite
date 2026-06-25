@@ -1,89 +1,94 @@
-function scroll() {
+/* ===================================================================
+   Matt Donohue — Physiotherapy Portfolio
+   =================================================================== */
 
-    var t = window.scrollY;
-    var para = document.getElementById("para");
-    var m = 0.5;
-    var b = 0;
+document.addEventListener('DOMContentLoaded', () => {
 
-    newY = m*t + b;
-    para.style.backgroundPositionY = newY + "px";
+    /* ---------- Navbar: solid background on scroll ---------- */
+    const navbar = document.getElementById('navbar');
+    const onScroll = () => {
+        navbar.classList.toggle('scrolled', window.scrollY > 40);
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
 
+    /* ---------- Mobile menu toggle ---------- */
+    const hamburger = document.getElementById('hamburgerIcon');
+    const navLinks = document.getElementById('navLinks');
+    hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
+    navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => navLinks.classList.remove('open'));
+    });
 
-    const whoAmI = document.getElementById('whoAmI');
-    const para1 = document.getElementById('para1');
-    const para1Bottom = para1.getBoundingClientRect().bottom;
-
-    // When yellow section scrolls out of view
-    if (para1Bottom < window.innerHeight) {
-        whoAmI.classList.add('visible');
+    /* ---------- Scroll reveal ---------- */
+    const reveals = document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, i) => {
+                if (entry.isIntersecting) {
+                    // small stagger for siblings revealing together
+                    setTimeout(() => entry.target.classList.add('visible'), (i % 4) * 90);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+        reveals.forEach(el => observer.observe(el));
     } else {
-        whoAmI.classList.remove('visible');
+        reveals.forEach(el => el.classList.add('visible'));
     }
+
+    /* ---------- Carousel ---------- */
+    initCarousel();
+});
+
+/* ===================================================================
+   Carousel (with dots + autoplay)
+   =================================================================== */
+let currentSlide = 0;
+let carouselTimer = null;
+
+function getSlides() {
+    return document.querySelectorAll('.carousel-image');
 }
 
-window.addEventListener('scroll', () => {
-    const whoAmI = document.getElementById('whoAmI');
-    const scrollPosition = window.scrollY;
-
-    // Check if scrolled 1400px or more
-    if (scrollPosition >= 500) {
-        whoAmI.classList.add('visible');
-    } //else {
-       // whoAmI.classList.remove('visible'); // Optionally hide when scrolling back up
-    //}
-});
-
-
-window.addEventListener('scroll', () => {
-    const section = document.getElementById('whoIAm');
-    const position = section.getBoundingClientRect().top;
-
-    if (position < window.innerHeight - 100) {
-        section.classList.add('visible');
-    }
-});
-
-
-let currentSlide = 0; // Track the current slide
-
-// Initialize the carousel
 function showSlide(index) {
-    const slides = document.querySelectorAll('.carousel-image');
-    slides.forEach(slide => slide.classList.remove('active')); // Hide all slides
+    const slides = getSlides();
+    if (!slides.length) return;
 
-    // Wrap around if the index is out of bounds
     currentSlide = (index + slides.length) % slides.length;
 
-    slides[currentSlide].classList.add('active'); // Show the current slide
+    slides.forEach((slide, i) => slide.classList.toggle('active', i === currentSlide));
+
+    const dots = document.querySelectorAll('#carouselDots .dot');
+    dots.forEach((dot, i) => dot.classList.toggle('active', i === currentSlide));
 }
 
-// Change slide based on navigation
 function changeSlide(direction) {
     showSlide(currentSlide + direction);
+    restartAutoplay();
 }
 
-// Show the first slide on page load
-document.addEventListener('DOMContentLoaded', () => {
-    showSlide(currentSlide);
-});
+function restartAutoplay() {
+    clearInterval(carouselTimer);
+    carouselTimer = setInterval(() => showSlide(currentSlide + 1), 5000);
+}
 
+function initCarousel() {
+    const slides = getSlides();
+    if (!slides.length) return;
 
+    // Build dots
+    const dotsContainer = document.getElementById('carouselDots');
+    if (dotsContainer) {
+        slides.forEach((_, i) => {
+            const dot = document.createElement('button');
+            dot.className = 'dot' + (i === 0 ? ' active' : '');
+            dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
+            dot.addEventListener('click', () => { showSlide(i); restartAutoplay(); });
+            dotsContainer.appendChild(dot);
+        });
+    }
 
-
-
-
-// Wait for the DOM to load before adding event listeners
-document.addEventListener('DOMContentLoaded', function() {
-    const hamburgerIcon = document.getElementById('hamburgerIcon');
-    const navLinks = document.getElementById('navLinks');
-
-    // Add event listener to the hamburger icon
-    hamburgerIcon.addEventListener('click', function() {
-        // Check if the navLinks are hidden or visible
-        if (navLinks.style.display === 'block') {
-            navLinks.style.display = 'none'; // Hide the menu
-        } else {
-            navLinks.style.display = 'block'; // Show the menu
-        }
-    });
-});
+    showSlide(0);
+    restartAutoplay();
+}
